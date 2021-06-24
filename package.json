@@ -1,0 +1,15 @@
+{
+  "name": "atelier",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lukaPetricic/Atelier.git",
+  "author": "Luka Petricic <lukapetricic@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon ./server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.6.0"
+  }
+}
