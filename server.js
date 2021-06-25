@@ -32,6 +32,16 @@ app.get('/products/:productId/styles', (req, res) => {
   }
 })
 
+app.get('/products/:productId/related', (req, res) => {
+  let productId = req.params.productId;
+
+  if (productId <= 0 || isNaN(Number(productId))) {
+    res.status(400).send('Malformed request syntax');
+  } else {
+    db.getRelatedProducts(productId, (result) => res.send(result))
+  }
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })

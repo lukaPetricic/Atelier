@@ -74,12 +74,24 @@ function getProductStyles(productId, cb) {
   })
 }
 
+function getRelatedProducts(productId, cb) {
+  pool.query(`SELECT related_product_id FROM related r WHERE r.current_product_id = ${productId}`, (err, res) => {
+    if (err) console.error(err);
+    let related = [];
+    res.rows.forEach(obj => {
+      related.push(Object.values(obj)[0]);
+    })
+    cb(related);
+  })
+}
+
 
 
 module.exports = {
   listProducts,
   getProductInfo,
-  getProductStyles
+  getProductStyles,
+  getRelatedProducts
 }
 
 // "    LEFT JOIN skus sk ON sk.style_id = st.id
