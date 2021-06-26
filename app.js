@@ -5,6 +5,10 @@ const app = express()
 app.use(express.json());
 app.use(express.urlencoded());
 
+app.get('/', (req, res) => {
+  res.status(200).send('All clear');
+})
+
 app.get('/products', (req, res) => {
   let page = Number(req.query.page) || 1;
   let count = Number(req.query.count) || 5;
