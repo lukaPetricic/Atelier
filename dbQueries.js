@@ -62,6 +62,7 @@ function getProductStyles(productId, cb) {
             skus[skuId] = obj.json_build_object[skuId];
           })
 
+          style['default?'] = Boolean(style['default?']);
           style.skus = skus;
           resolve(true)
         })
@@ -69,7 +70,11 @@ function getProductStyles(productId, cb) {
     });
 
     Promise.all(promises).then(() => {
-      cb(styles)
+      let result = {
+        product_id: productId,
+        results: styles
+      }
+      cb(result)
     })
   })
 }
@@ -91,7 +96,8 @@ module.exports = {
   listProducts,
   getProductInfo,
   getProductStyles,
-  getRelatedProducts
+  getRelatedProducts,
+  pool
 }
 
 // "    LEFT JOIN skus sk ON sk.style_id = st.id
