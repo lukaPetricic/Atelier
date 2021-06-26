@@ -54,7 +54,7 @@ describe('should get products details', () => {
       expect(data).toHaveProperty('features');
       done();
     })
-  }, 10000)
+  })
 
   test('should should have features listed as objects', (done) => {
     db.getProductInfo(23656, data => {
@@ -64,19 +64,19 @@ describe('should get products details', () => {
       expect(data.features[1]).toHaveProperty('value');
       done();
     })
-  }, 10000)
+  })
 })
 
 
 describe('should get products styles', () => {
 
-  xtest('should be an object', (done) => {
+  test('should be an object', (done) => {
     db.getProductStyles(789, data => {
       expect(typeof data).toBe('object');
       expect(Array.isArray(data)).toBe(false);
       done();
     })
-  }, 10000)
+  })
 
   test('should store results in array \"results\"', (done) => {
     db.getProductStyles(156, data => {
@@ -84,15 +84,15 @@ describe('should get products styles', () => {
       expect(data.results.length).toBeGreaterThan(0);
       done();
     })
-  }, 20000)
+  })
 
-  xtest('should have several distinct styles', (done) => {
+  test('should have several distinct styles', (done) => {
     db.getProductStyles(999, data => {
       expect(data.results[0].style_id === data.results[1].style_id).toBe(false);
       expect(data.results[1].style_id === data.results[2].style_id).toBe(false);
       done();
     })
-  }, 20000)
+  })
 })
 
 describe('should get realted products', () => {
@@ -102,7 +102,7 @@ describe('should get realted products', () => {
       expect(Array.isArray(data)).toBe(true);
       done();
     })
-  }, 20000)
+  })
 
   test('should contain integers', (done) => {
     db.getRelatedProducts(687982, data => {
@@ -110,5 +110,5 @@ describe('should get realted products', () => {
       expect(typeof data[1]).toBe('number');
       done();
     })
-  }, 20000)
+  })
 })

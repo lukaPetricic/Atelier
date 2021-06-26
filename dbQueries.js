@@ -9,7 +9,7 @@ const pool = new Pool({
 
 function listProducts(page, count, cb) {
   let start = page * count - count;
-  let end = page * count;
+  let end = page * count + 1;
   let before = Date.now()
   pool.query(`SELECT * FROM product WHERE id > ${start} AND id < ${end}`, (err, res) => {
     if (err) console.error(err);
