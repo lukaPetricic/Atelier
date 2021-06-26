@@ -21,7 +21,7 @@ app.get('/products/:productId', (req, res) => {
   if (productId <= 0 || isNaN(Number(productId))) {
     res.status(400).send('Malformed request syntax');
   } else {
-    db.getProductInfo(productId, (result) => res.send(result))
+    db.getProductInfo(productId, (result) => res.send(result), 300)
   }
 })
 

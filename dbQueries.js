@@ -63,6 +63,7 @@ function getProductStyles(productId, cb) {
           })
 
           style['default?'] = Boolean(style['default?']);
+          style.sale_price = style.sale_price === "null" ? false : style.sale_price;
           style.skus = skus;
           resolve(true)
         })
