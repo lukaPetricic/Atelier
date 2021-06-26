@@ -9,9 +9,12 @@ const pool = new Pool({
 
 function listProducts(page, count, cb) {
   let start = page * count - count;
-  pool.query(`SELECT * FROM product LIMIT ${count} OFFSET ${start}`, (err, res) => {
+  let end = page * count;
+  let before = Date.now()
+  pool.query(`SELECT * FROM product WHERE id > ${start} AND id < ${end}`, (err, res) => {
     if (err) console.error(err);
     cb(res.rows);
+    console.log(Date.now() - before);
   })
 }
 
