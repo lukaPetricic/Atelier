@@ -4,8 +4,8 @@ import { sleep } from 'k6';
 let numberOfTests = 1;
 
 export let options = {
-  vus: 10,
-  duration: '60s'
+  vus: 100,
+  duration: '10s'
 };
 
 export default function () {

@@ -1,20 +1,22 @@
 const { Pool } = require('pg')
+const config = require('./config.js')
 
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'products',
-  password: '0000'
-})
+// const pool = new Pool({
+//   user: 'postgres',
+//   host: '18.117.178.149',
+//   password: '%NYTw2*HXvX=VTRj',
+//   database: 'products',
+//   port: '4321'
+// })
+
+const pool = new Pool(config)
 
 function listProducts(page, count, cb) {
   let start = page * count - count;
   let end = page * count + 1;
-  let before = Date.now()
   pool.query(`SELECT * FROM product WHERE id > ${start} AND id < ${end}`, (err, res) => {
     if (err) console.error(err);
     cb(res.rows);
-    console.log(Date.now() - before);
   })
 }
 

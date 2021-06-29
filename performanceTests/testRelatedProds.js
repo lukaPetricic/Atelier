@@ -4,7 +4,7 @@ import { sleep } from 'k6';
 let numberOfTests = 1;
 
 export let options = {
-  vus: 1000,
+  vus: 100,
   duration: '10s'
 };
 
